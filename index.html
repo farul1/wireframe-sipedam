@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wireframe Prototype</title>
+  <link rel="stylesheet" href="styles.css?v=black-white-wireframe-3">
+  <link rel="stylesheet" href="wireframe-lock.css?v=black-white-wireframe-3">
+</head>
+<body class="wireframe-mode">
+  <div class="auth-screen" id="authScreen">
+    <section class="auth-panel auth-panel-wide">
+      <div class="brand-lockup">
+        <span class="wire-image-placeholder">LOGO</span>
+        <div>
+          <h1>Nama Website</h1>
+          <p>Tagline Website</p>
+        </div>
+      </div>
+
+      <div class="auth-tabs" role="tablist">
+        <button class="active" type="button" data-auth-tab="ormawa">Login ORMAWA/UKM</button>
+        <button type="button" data-auth-tab="kompetisi">Login Kompetisi</button>
+      </div>
+
+      <input type="hidden" id="loginRole" value="organization">
+
+      <div class="login-panel active" id="loginOrmawaPanel">
+        <div class="auth-copy compact">
+          <span class="auth-icon red">ORG</span>
+          <h2>Masuk ORMAWA/UKM</h2>
+          <p>Gunakan NIM/email dan password untuk masuk. Login tidak menggunakan OTP.</p>
+        </div>
+        <label class="field-label">NIM atau Email</label>
+        <input class="select-input" value="bem@student.telkomuniversity.ac.id">
+        <label class="field-label">Password</label>
+        <input class="select-input" type="password" value="password">
+        <div class="auth-row"><label><input type="checkbox"> Ingat saya</label><button type="button" class="link-btn">Lupa password?</button></div>
+        <div class="field-label">Simulasi masuk sebagai</div>
+        <div class="role-login-grid">
+          <button type="button" class="role-login active" data-login-role="organization">Organisasi / ORMAWA</button>
+          <button type="button" class="role-login" data-login-role="admin_ormawa">Admin ORMAWA UKM</button>
+          <button type="button" class="role-login" data-login-role="super_admin">Super Admin</button>
+        </div>
+        <button class="primary-btn" id="loginBtn">Masuk Dashboard</button>
+        <p class="auth-bottom">Belum punya akun? <button type="button" class="link-btn red" data-open-register="ormawa">Registrasi ORMAWA/UKM</button></p>
+      </div>
+
+      <div class="login-panel" id="loginKompetisiPanel">
+        <div class="auth-copy compact">
+          <span class="auth-icon blue">KOM</span>
+          <h2>Masuk Kompetisi Mandiri</h2>
+          <p>Mahasiswa kompetisi dan admin kompetisi masuk menggunakan email/NIM dan password.</p>
+        </div>
+        <label class="field-label">NIM atau Email</label>
+        <input class="select-input" value="nadia@student.telkomuniversity.ac.id">
+        <label class="field-label">Password</label>
+        <input class="select-input" type="password" value="password">
+        <div class="auth-row"><label><input type="checkbox"> Ingat saya</label><button type="button" class="link-btn blue">Lupa password?</button></div>
+        <div class="field-label">Simulasi masuk sebagai</div>
+        <div class="role-login-grid">
+          <button type="button" class="role-login active blue" data-login-role="mahasiswa_kompetisi">Mahasiswa Kompetisi</button>
+          <button type="button" class="role-login blue" data-login-role="admin_kompetisi">Admin Kompetisi</button>
+          <button type="button" class="role-login blue" data-login-role="super_admin">Super Admin</button>
+        </div>
+        <button class="primary-btn blue-btn" id="loginKompetisiBtn" type="button">Masuk Dashboard</button>
+        <p class="auth-bottom">Belum punya akun? <button type="button" class="link-btn blue" data-open-register="kompetisi">Registrasi Mahasiswa Kompetisi</button></p>
+      </div>
+    </section>
+
+    <aside class="auth-preview" aria-hidden="true">
+      <div class="preview-card wide"></div>
+      <div class="preview-grid"><div></div><div></div><div></div></div>
+      <div class="preview-table"></div>
+    </aside>
+  </div>
+
+  <div class="app-shell is-hidden" id="appShell">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <span class="wire-image-placeholder small">LOGO</span>
+        <div>
+          <strong>Nama Website</strong>
+          <small>Tagline / Subjudul Website</small>
+        </div>
+      </div>
+      <div class="role-pill" id="rolePill"></div>
+      <nav class="sidebar-nav" id="sidebarNav"></nav>
+      <div class="sidebar-footer">
+        <div class="demo-toggle">
+          <div><strong>Mode Demo</strong><span>Buka semua alur prototype</span></div>
+          <button class="switch is-on" aria-label="Mode Demo"><span></span></button>
+        </div>
+        <button class="ghost-btn full" id="logoutBtn">Logout</button>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="icon-btn mobile-only" id="menuBtn">Menu</button>
+        <div class="page-heading">
+          <p class="top-kicker" id="pageKicker">Dashboard</p>
+          <h2 id="pageTitle">Dashboard</h2>
+        </div>
+        <div class="top-actions">
+          <select id="roleSwitcher" class="compact-select"></select>
+          <button class="icon-btn" id="themeBtn" title="Toggle theme">Theme</button>
+          <button class="notif-btn" id="notifBtn">Notif <span>6</span></button>
+          <div class="avatar-block">
+            <span class="wire-image-placeholder avatar">IMG</span>
+            <div><strong id="userName">Syafarul</strong><small id="userRole">Super Admin</small></div>
+          </div>
+        </div>
+      </header>
+
+      <section class="notification-drawer" id="notificationDrawer">
+        <div class="drawer-head"><strong>Notifikasi</strong><button id="closeNotif">x</button></div>
+        <div class="notif-list" id="notifList"></div>
+      </section>
+
+      <section class="content" id="content"></section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal">
+      <button class="modal-close" id="modalClose">x</button>
+      <span class="eyebrow">Konfirmasi Aksi</span>
+      <h3 id="modalTitle">Approve Pengajuan</h3>
+      <p id="modalText">Tambahkan catatan sebelum menyimpan perubahan status.</p>
+      <textarea placeholder="Catatan admin atau tindak lanjut...">Dokumen sudah sesuai, proses dapat dilanjutkan.</textarea>
+      <div class="modal-actions">
+        <button class="ghost-btn" id="modalCancel">Batal</button>
+        <button class="primary-btn" id="modalOk">Simpan</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="register-preview" id="registerPreview">
+    <div class="register-card register-card-wide">
+      <button id="registerClose" class="modal-close">x</button>
+      <span class="eyebrow" id="registerEyebrow">Registrasi ORMAWA/UKM</span>
+      <h3 id="registerTitle">Registrasi Akun ORMAWA/UKM</h3>
+      <div class="register-path-tabs">
+        <button type="button" class="active" data-register-path="ormawa">ORMAWA/UKM</button>
+        <button type="button" data-register-path="kompetisi">Mahasiswa Kompetisi</button>
+      </div>
+      <div class="register-flow">
+        <div class="register-form-area" id="registerFormArea"></div>
+        <aside class="otp-side" id="otpSide">
+          <h4>Verifikasi OTP Registrasi</h4>
+          <p>OTP hanya digunakan saat registrasi. Kode dikirim ke email/WhatsApp setelah data akun dan dokumen diisi.</p>
+          <div class="otp-fields"><input value="8"><input value="2"><input value="4"><input value="6"></div>
+          <button class="primary-btn full" type="button">Verifikasi OTP</button>
+          <small>Simulasi kode OTP: 8246</small>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">Status berhasil diperbarui.</div>
+  <script src="app.js?v=black-white-wireframe-3"></script>
+</body>
+</html>
