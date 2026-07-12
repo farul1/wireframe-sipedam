@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Figma Export Links - Wireframe</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background: #fff; color: #000; }
+    main { max-width: 1180px; margin: 0 auto; padding: 32px 20px; }
+    h1 { margin: 0 0 8px; font-size: 28px; }
+    p { margin: 0 0 22px; color: #000; line-height: 1.5; }
+    section { margin-top: 24px; padding: 18px; border: 1px solid #000; border-radius: 0; background: #fff; }
+    h2 { margin: 0 0 14px; font-size: 18px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+    a { display: block; padding: 11px 12px; border: 1px solid #000; border-radius: 0; background: #fff; color: #000; font-weight: 700; text-decoration: none; }
+    a:hover { background: #fff; }
+    code { background: #fff; border: 1px solid #000; padding: 2px 5px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Figma Export Links</h1>
+  <p>Upload folder ini ke GitHub Pages, buka file ini, lalu copy link tiap screen ke HTML-to-Figma. Link dashboard sudah memakai parameter <code>?role=...&page=...</code> sehingga halaman setelah login langsung terbuka.</p>
+
+  <section>
+    <h2>Auth Screens</h2>
+    <div class="grid">
+      <a href="index.html?screen=login_ormawa">Login ORMAWA/UKM</a>
+      <a href="index.html?screen=login_kompetisi">Login Kompetisi Mandiri</a>
+      <a href="index.html?screen=register_ormawa">Registrasi ORMAWA/UKM + OTP</a>
+      <a href="index.html?screen=register_kompetisi">Registrasi Mahasiswa Kompetisi + OTP</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Super Admin</h2>
+    <div class="grid">
+      <a href="index.html?role=super_admin&page=dashboard">Dashboard</a><a href="index.html?role=super_admin&page=process">Proses Pengajuan</a><a href="index.html?role=super_admin&page=proposal_ormawa">Proposal ORMAWA/UKM</a><a href="index.html?role=super_admin&page=kompetisi">Pengajuan Kompetisi</a><a href="index.html?role=super_admin&page=detail_pengajuan">Detail + Tracking Realtime</a><a href="index.html?role=super_admin&page=review_proposal">Review Proposal</a><a href="index.html?role=super_admin&page=lpj_ormawa">LPJ ORMAWA/UKM</a><a href="index.html?role=super_admin&page=lpj_kompetisi">LPJ Kompetisi</a><a href="index.html?role=super_admin&page=review_lpj">Review LPJ</a><a href="index.html?role=super_admin&page=jadwal_ormawa">Jadwal Presentasi ORMAWA</a><a href="index.html?role=super_admin&page=jadwal_kompetisi">Jadwal Presentasi Kompetisi</a><a href="index.html?role=super_admin&page=triwulan">Manajemen Triwulan</a><a href="index.html?role=super_admin&page=calendar">Kalender</a><a href="index.html?role=super_admin&page=users_ormawa">User ORMAWA/UKM</a><a href="index.html?role=super_admin&page=users_kompetisi">User Kompetisi</a><a href="index.html?role=super_admin&page=notifications">Notifikasi</a><a href="index.html?role=super_admin&page=settings">Website Settings</a><a href="index.html?role=super_admin&page=profile">Profil</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Admin ORMAWA/UKM</h2>
+    <div class="grid">
+      <a href="index.html?role=admin_ormawa&page=dashboard">Dashboard</a><a href="index.html?role=admin_ormawa&page=proposal_ormawa">Proposal ORMAWA/UKM</a><a href="index.html?role=admin_ormawa&page=review_proposal">Review Proposal</a><a href="index.html?role=admin_ormawa&page=lpj_ormawa">LPJ ORMAWA/UKM</a><a href="index.html?role=admin_ormawa&page=review_lpj">Review LPJ</a><a href="index.html?role=admin_ormawa&page=triwulan">Manajemen Triwulan</a><a href="index.html?role=admin_ormawa&page=users_ormawa">Manajemen User</a><a href="index.html?role=admin_ormawa&page=calendar">Kalender</a><a href="index.html?role=admin_ormawa&page=notifications">Notifikasi</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Admin Kompetisi</h2>
+    <div class="grid">
+      <a href="index.html?role=admin_kompetisi&page=dashboard">Dashboard</a><a href="index.html?role=admin_kompetisi&page=kompetisi">Pengajuan Kompetisi</a><a href="index.html?role=admin_kompetisi&page=review_proposal">Review Proposal</a><a href="index.html?role=admin_kompetisi&page=lpj_kompetisi">LPJ Kompetisi</a><a href="index.html?role=admin_kompetisi&page=review_lpj">Review LPJ</a><a href="index.html?role=admin_kompetisi&page=jadwal_kompetisi">Jadwal Presentasi</a><a href="index.html?role=admin_kompetisi&page=users_kompetisi">Manajemen User</a><a href="index.html?role=admin_kompetisi&page=calendar">Kalender</a><a href="index.html?role=admin_kompetisi&page=notifications">Notifikasi</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>ORMAWA/UKM</h2>
+    <div class="grid">
+      <a href="index.html?role=organization&page=dashboard">Dashboard</a><a href="index.html?role=organization&page=proposal_ormawa">Pengajuan Proposal</a><a href="index.html?role=organization&page=detail_pengajuan">Detail + Tracking Realtime</a><a href="index.html?role=organization&page=lpj_ormawa">LPJ</a><a href="index.html?role=organization&page=jadwal_ormawa">Jadwal Presentasi</a><a href="index.html?role=organization&page=calendar">Kalender</a><a href="index.html?role=organization&page=notifications">Notifikasi</a><a href="index.html?role=organization&page=profile">Profil</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Mahasiswa Kompetisi</h2>
+    <div class="grid">
+      <a href="index.html?role=mahasiswa_kompetisi&page=dashboard">Dashboard</a><a href="index.html?role=mahasiswa_kompetisi&page=kompetisi">Pengajuan Kompetisi Mandiri</a><a href="index.html?role=mahasiswa_kompetisi&page=detail_pengajuan">Detail + Tracking Realtime</a><a href="index.html?role=mahasiswa_kompetisi&page=lpj_kompetisi">LPJ Kompetisi</a><a href="index.html?role=mahasiswa_kompetisi&page=jadwal_kompetisi">Jadwal Presentasi</a><a href="index.html?role=mahasiswa_kompetisi&page=calendar">Kalender</a><a href="index.html?role=mahasiswa_kompetisi&page=notifications">Notifikasi</a><a href="index.html?role=mahasiswa_kompetisi&page=profile">Profil</a>
+    </div>
+  </section>
+</main>
+</body>
+</html>
+

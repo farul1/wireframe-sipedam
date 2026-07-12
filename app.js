@@ -137,7 +137,15 @@ function renderSidebar() {
 function navLink(item) {
   const active = item.page === currentPage ? 'active' : '';
   const badge = ['proposal_ormawa','kompetisi','users_ormawa','users_kompetisi','notifications'].includes(item.page) ? '<span class="badge-count">3</span>' : '';
-  return `<a href="#" class="nav-link ${active}" data-page="${item.page}"><span>${item.label}</span>${badge}</a>`;
+  return `<a href="${exportUrl(currentRole, item.page)}" class="nav-link ${active}" data-page="${item.page}"><span>${item.label}</span>${badge}</a>`;
+}
+
+function exportUrl(role = currentRole, page = 'dashboard', screen = '') {
+  const params = new URLSearchParams();
+  if (screen) params.set('screen', screen);
+  params.set('role', role);
+  params.set('page', page);
+  return `index.html?${params.toString()}`;
 }
 
 renderPage = function(page) {
@@ -791,6 +799,52 @@ function otpFlowMarkup(path) {
   const buttonClass = isKompetisi ? 'primary-btn blue-btn full' : 'primary-btn full';
   return `<div class="otp-flow ${themeClass}"><div class="otp-block"><div class="otp-icon">@</div><h4>Pilih Metode Pengiriman OTP</h4><p>Setelah register berhasil, sistem menampilkan halaman pilihan channel OTP seperti website asli.</p><details open><summary>Panduan OTP</summary><div class="otp-guide"><span>1</span><p>Pilih email atau WhatsApp/telepon yang sudah dimasking.</p><span>2</span><p>Klik kirim OTP untuk membuka halaman verifikasi kode.</p><span>3</span><p>Kode digunakan hanya untuk registrasi, bukan login.</p></div></details><label class="otp-channel"><input type="radio" checked><div><strong>Email</strong><small>${destinationEmail}</small></div></label><label class="otp-channel"><input type="radio"><div><strong>WhatsApp / Telepon</strong><small>${destinationPhone}</small></div></label><button class="${buttonClass}" type="button">Kirim OTP</button></div><div class="otp-block verify"><div class="otp-icon key">#</div><h4>Verifikasi OTP</h4><p>Masukkan kode OTP 6 digit yang dikirim ke channel terpilih.</p><label class="otp-code-field"><span>Kode OTP</span><input value="824613" maxlength="6" inputmode="numeric"></label><div class="otp-meta"><strong>Sisa waktu 04:59</strong><span>OTP berlaku sementara dan bisa dikirim ulang setelah cooldown.</span></div><button class="${buttonClass}" type="button">Verifikasi OTP</button><div class="otp-resend-grid"><button type="button">Kirim ulang WhatsApp</button><button type="button">Kirim ulang Email</button></div><div class="otp-link-grid"><button type="button">Ganti metode</button><button type="button">Kembali ke form</button></div></div></div>`;
 }
+
+function applyExportDeepLink() {
+  const params = new URLSearchParams(window.location.search);
+  const screen = params.get('screen') || '';
+  const role = roles[params.get('role')] ? params.get('role') : 'super_admin';
+  const page = params.get('page') || 'dashboard';
+
+  if (!params.toString()) return;
+
+  if (screen === 'login_ormawa') {
+    qs('authScreen')?.classList.remove('is-hidden');
+    qs('appShell')?.classList.add('is-hidden');
+    document.querySelector('[data-auth-tab="ormawa"]')?.click();
+    return;
+  }
+
+  if (screen === 'login_kompetisi') {
+    qs('authScreen')?.classList.remove('is-hidden');
+    qs('appShell')?.classList.add('is-hidden');
+    document.querySelector('[data-auth-tab="kompetisi"]')?.click();
+    return;
+  }
+
+  if (screen === 'register_ormawa' || screen === 'register_kompetisi') {
+    qs('authScreen')?.classList.remove('is-hidden');
+    qs('appShell')?.classList.add('is-hidden');
+    setRegisterPath(screen === 'register_kompetisi' ? 'kompetisi' : 'ormawa');
+    qs('registerPreview')?.classList.add('open');
+    return;
+  }
+
+  qs('authScreen')?.classList.add('is-hidden');
+  qs('appShell')?.classList.remove('is-hidden');
+  currentRole = role;
+  if (qs('roleSwitcher')) qs('roleSwitcher').value = role;
+  const roleData = roles[role];
+  qs('userName').textContent = roleData.user;
+  qs('userRole').textContent = roleData.label;
+  qs('rolePill').innerHTML = `${roleData.label}<br><span>${roleData.subtitle}</span>`;
+  renderSidebar();
+  renderPage(pageTitles[page] ? page : 'dashboard');
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  window.setTimeout(applyExportDeepLink, 0);
+});
 
 
 
